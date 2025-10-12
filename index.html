@@ -42,6 +42,17 @@
             opacity: 0.9;
         }
         
+        /* Mobile Navigation Styles */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
         nav {
             background-color: #1e5631;
             position: sticky;
@@ -341,9 +352,35 @@
             padding: 1rem;
         }
         
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+            
             nav ul {
                 flex-direction: column;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav li {
+                width: 100%;
+                text-align: center;
             }
             
             .gallery {
@@ -365,19 +402,51 @@
             .author-detail {
                 grid-template-columns: 1fr;
             }
+            
+            .author-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .card img {
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
+            <button class="mobile-nav-toggle" id="mobileNavToggle">☰</button>
             <h1>ညောင်လေးပင်မြို့</h1>
             <p>သမိုင်းဝင်၊ ယဉ်ကျေးမှုနှင့် စာပေမြို့တော်</p>
         </div>
     </header>
     
     <nav>
-        <ul>
+        <ul id="mainNav">
             <li><a href="#" class="nav-link" data-page="home">မူလစာမျက်နှာ</a></li>
             <li><a href="#" class="nav-link" data-page="about">အကြောင်း</a></li>
             <li><a href="#" class="nav-link" data-page="authors">စာရေးဆရာများ</a></li>
@@ -409,14 +478,14 @@
                         </div>
                     </div>
                     <div class="card">
-                        <img src="phayargyi.jpg" alt="စေတီပုံ">
+                        <img src="phayargyi.jpeg" alt="စေတီပုံ">
                         <div class="card-content">
                             <h3>ကုသိနာရုံ လျောင်းတော်မူဘုရားကြီး</h3>
                             <p>သမိုင်းဝင်စေတီတော်တစ်ဆူ</p>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="phayargyi.jpg" alt="ပုထိုးပုံ">
+                        <img src="payargyi.jpg" alt="ပုထိုးပုံ">
                         <div class="card-content">
                             <h3>ပါဠိသိပ္ပံ ရှေးဟောင်းကျောင်းတော်ကြီး</h3>
                             <p>ရှေးဟောင်းဗိသုကာလက်ရာများဖြင့် တည်ဆောက်ထားသော ကျောင်းတော်ကြီး</p>
@@ -429,7 +498,7 @@
                 <h2 class="section-title">ထင်ရှားသော စာရေးဆရာများ</h2>
                 <div class="gallery">
                     <div class="card author-card-clickable" data-author="1">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာရေးဆရာပုံ">
+                        <img src="myintthan.jpg" alt="စာရေးဆရာပုံ">
                         <div class="card-content">
                             <h3>ဦးမြင့်သန်း</h3>
                             <p class="pen-name">(ကလောင်အမည် - ဒေါက်တာမြင့်သန်း)</p>
@@ -441,7 +510,7 @@
                         <div class="card-content">
                             <h3>ဦးနေလင်း</h3>
                             <p class="pen-name">(ကလောင်အမည် - နေလင်း)</p>
-                            <p>ကဗျာဆရာနှင့် ဝတ္ထုတိုဆောင်းပါးရေးဆရာ။ ညောင်လေးပင်မြို့၏ ရိုးရာယဉ်ကျေးမှုများကို ရေးသားလေ့ရှိသည်။</p>
+                            <p>ကဗျာဆရာနှင့် ဝတ္ထုတိုဆောင်းပါး�ရေးဆရာ။ ညောင်လေးပင်မြို့၏ ရိုးရာယဉ်ကျေးမှုများကို ရေးသားလေ့ရှိသည်။</p>
                         </div>
                     </div>
                     <div class="card author-card-clickable" data-author="3">
@@ -526,14 +595,14 @@
             <h2 class="section-title">စာအုပ်များ</h2>
             <div class="gallery">
                 <div class="card">
-                    <img src="myint1.jpg" alt="စာအုပ်ပုံ">
+                    <img src="myint2.jpg" alt="စာအုပ်ပုံ">
                     <div class="card-content">
                         <h3>သက်ရှိတို့ကို ဖန်ဆင်းသူဗီဇ</h3>
                         <p>စာရေးဆရာ - ဦးမြင့်သန်း</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="myint2.jpg" alt="စာအုပ်ပုံ">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာအုပ်ပုံ">
                     <div class="card-content">
                         <h3>ညောင်လေးပင်မြို့ဟူသည်...</h3>
                         <p>စာရေးဆရာ - ဦးနေလင်း</p>
@@ -547,7 +616,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="myint2.jpg" alt="စာအုပ်ပုံ">
+                    <img src="myint1.jpg" alt="စာအုပ်ပုံ">
                     <div class="card-content">
                         <h3>နှလုံးသားထဲက ဒဿနများ</h3>
                         <p>စာရေးဆရာ - ဦးမြင့်သန်း</p>
@@ -578,11 +647,11 @@
                     <img src="payar.jpg" alt="သမိုင်းဝင်ဘုရား">
                     <div class="card-content">
                         <h3>ညောင်လေးပင် ဘုရားကြီး</h3>
-                        <p>မြို့၏အထင်ကရ သမိုင်းဝင်ဘုရားကြီး</p>
+                        <p>မြို့၏အထင်ကရ သမိုင်း�ဝင်ဘုရားကြီး</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="phayargyi.jpg" alt="စေတီပုံ">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စေတီပုံ">
                     <div class="card-content">
                         <h3>ကုသိနာရုံ လျောင်းတော်မူဘုရားကြီး</h3>
                         <p>သမိုင်းဝင်စေတီတော်တစ်ဆူ</p>
@@ -624,7 +693,7 @@
             <h2 class="section-title">အရောင်းဌာနများ</h2>
             <div class="gallery">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာအုပ်ဆိုင်ပုံ">
+                    <img src="bookshop.jpeg" alt="စာအုပ်ဆိုင်ပုံ">
                     <div class="card-content">
                         <h3>ညောင်လေးပင် စာအုပ်ဆိုင်</h3>
                         <p>မြို့လယ်ခေါင်၊ မြို့နယ်စာကြည့်တိုက်အနီး</p>
@@ -640,9 +709,9 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာအုပ်ဆိုင်ပုံ">
+                    <img src="lib.jpg" alt="စာအုပ်ဆိုင်ပုံ">
                     <div class="card-content">
-                        <h3>ညောင်လေးပင်စာပေဗိမာန်</h3>
+                        <h3>ညောင်လေးပင်စာကြည့်တိုက်</h3>
                         <p>ကျောင်းလမ်း၊ ညောင်လေးပင်မြို့</p>
                         <p>ဖုန်း - ၀၉-၇၆၅၄၃၂၁၀၉</p>
                     </div>
@@ -676,14 +745,27 @@
     </footer>
     
     <script>
-        // Navigation functionality
+        // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Navigation functionality
             const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page');
             
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    
+                    // Close mobile menu when a link is clicked
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                    }
                     
                     // Get the target page id
                     const targetPage = this.getAttribute('data-page');
@@ -738,7 +820,7 @@
                     '1': {
                         name: 'ဦးမြင့်သန်း',
                         penName: 'ဒေါက်တာမြင့်သန်း',
-                        image: 'myint1.jpg',
+                        image: 'myintthan.jpg',
                         bio: 'ညောင်လေးပင်မြို့တွင် မွေးဖွားခဲ့သော စာရေးဆရာကြီး။ ဝတ္ထုရှည်၊ ဝတ္ထုတိုများစွာရေးသားခဲ့သည်။ သူ၏ လက်ရာများသည် လူ့ဘဝ၊ လူ့သဘာဝ၊ လူမှုရေးနှင့် စိတ်ပညာဆိုင်ရာ အကြောင်းအရာများကို နက်နက်နဲနဲ ဆန်းစစ်လေ့ရှိသည်။',
                         books: [
                             { title: 'သက်ရှိတို့ကို ဖန်ဆင်းသူဗီဇ', image: 'myint1.jpg' },
@@ -763,7 +845,7 @@
                         image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80',
                         bio: 'ကဗျာဆရာ၊ စာရေးဆရာ။ ညောင်လေးပင်၏ သမိုင်းကြောင်း ဆောင်းပါးများ ရေးသားသည်။ သူမသည် ညောင်လေးပင်မြို့၏ သမိုင်းကြောင်း၊ ရိုးရာဓလေ့များနှင့် ယဉ်ကျေးမှုအမွေအနှစ်များကို မှတ်တမ်းတင်ရာတွင် အထူးပင် အားသန်သည်။',
                         books: [
-                            { title: 'ညောင်လေးပင် သမိုင်းဝင်နေရာများ', image: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80' },
+                            { title: 'ညောင်လေးပင် သမိုင်းဝင်နေရာများ', image: 'payar.jpg' },
                             { title: 'ခရီးစဉ်မှတ်တမ်း', image: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80' },
                             { title: 'မြစ်ဝကျွန်းပေါ်ဒေသ ရိုးရာဓလေ့များ', image: 'https://images.unsplash.com/photo-1531901599638-a89bb60971a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80' }
                         ]
@@ -802,4 +884,3 @@
     </script>
 </body>
 </html>
-
