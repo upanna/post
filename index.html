@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်း - စာအုပ်ဆိုင်</title>
+    <title>ညောင်လေးပင်မြို့</title>
     <style>
         * {
             margin: 0;
@@ -21,587 +21,209 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(to right, #2c7744, #5a9c6e);
             color: white;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: #1e5631;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-        
-        .logo p {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
         nav ul {
             display: flex;
+            justify-content: center;
             list-style: none;
+            padding: 0;
         }
         
-        nav ul li {
-            margin-left: 15px;
+        nav li {
+            margin: 0;
         }
         
-        nav ul li a {
+        nav a {
+            display: block;
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-            font-size: 14px;
+            padding: 1rem 1.5rem;
+            transition: background-color 0.3s;
         }
         
-        nav ul li a:hover {
-            color: #3498db;
+        nav a:hover {
+            background-color: #2c7744;
         }
         
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-            margin-bottom: 30px;
-        }
-        
-        .hero h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-        
-        .hero p {
-            font-size: 16px;
-            max-width: 800px;
-            margin: 0 auto;
+        section {
+            padding: 3rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin: 30px 0 20px;
-            font-size: 24px;
-            color: #2c3e50;
+            margin-bottom: 2rem;
+            color: #1e5631;
+            font-size: 1.8rem;
             position: relative;
         }
         
         .section-title:after {
             content: '';
             display: block;
-            width: 60px;
+            width: 80px;
             height: 3px;
-            background: #3498db;
+            background: #2c7744;
             margin: 10px auto;
         }
         
-        .authors-grid {
+        .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.2rem;
+        }
+        
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: #1e5631;
+        }
+        
+        .author-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         
         .author-card {
             background: white;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            cursor: pointer;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        .author-card:hover {
-            transform: translateY(-5px);
+        .author-card h3 {
+            color: #1e5631;
+            margin-bottom: 0.5rem;
         }
         
-        .author-img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        
-        .author-info {
-            padding: 10px;
-            text-align: center;
-        }
-        
-        .author-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        
-        .author-penname {
-            color: #7f8c8d;
+        .pen-name {
             font-style: italic;
-            font-size: 12px;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 1000;
-            overflow: auto;
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            border-radius: 8px;
-            position: relative;
-        }
-        
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #7f8c8d;
-        }
-        
-        .author-detail {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .author-detail-img {
-            width: 150px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin: 0 auto;
-        }
-        
-        .author-bio {
-            margin-bottom: 15px;
-            font-size: 14px;
+            color: #666;
+            margin-bottom: 1rem;
         }
         
         .books-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
+            margin-top: 1rem;
+            padding-left: 1.2rem;
         }
         
-        .book-item {
-            background: #f8f9fa;
-            padding: 8px;
-            border-radius: 5px;
-            text-align: center;
+        .books-list li {
+            margin-bottom: 0.3rem;
         }
         
-        .book-cover {
-            width: 80px;
-            height: 110px;
-            object-fit: cover;
-            margin-bottom: 8px;
-            border-radius: 3px;
-        }
-        
-        .book-title {
-            font-weight: bold;
-            font-size: 12px;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        /* Bookstore Styles */
-        .bookstore {
+        .contact-form {
             background: white;
-            padding: 20px;
+            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .bookstore-categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .category-btn {
-            background: #ecf0f1;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .category-btn.active {
-            background: #3498db;
-            color: white;
-        }
-        
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        
-        .book-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .book-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .book-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .book-details {
-            padding: 15px;
-        }
-        
-        .book-title-large {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-        
-        .book-author {
-            color: #7f8c8d;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .book-price {
-            color: #e74c3c;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        
-        .book-description {
-            font-size: 13px;
-            margin-bottom: 10px;
-            color: #555;
-        }
-        
-        .book-availability {
-            font-size: 12px;
-            color: #27ae60;
-            margin-bottom: 10px;
-        }
-        
-        .book-locations {
-            font-size: 12px;
-            color: #7f8c8d;
-        }
-        
-        .buy-btn {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        
-        .buy-btn:hover {
-            background: #c0392b;
-        }
-        
-        .activities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-        
-        .activity-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .activity-img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-        
-        .activity-info {
-            padding: 12px;
-        }
-        
-        .activity-date {
-            color: #7f8c8d;
-            font-size: 12px;
-            margin-bottom: 8px;
-        }
-        
-        .libraries-list {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .library-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .library-item:last-child {
-            border-bottom: none;
-        }
-        
-        .library-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-        
-        .membership {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 1.5rem;
         }
         
-        label {
+        .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 0.5rem;
             font-weight: bold;
-            font-size: 14px;
         }
         
-        input, textarea, select {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 0.8rem;
             border: 1px solid #ddd;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 1rem;
         }
         
-        button {
-            background: #3498db;
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #1e5631;
             color: white;
+            padding: 0.8rem 1.5rem;
             border: none;
-            padding: 12px 25px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
             transition: background 0.3s;
-            width: 100%;
         }
         
-        button:hover {
-            background: #2980b9;
+        .btn:hover {
+            background: #2c7744;
         }
         
         footer {
-            background: #2c3e50;
+            background: #1e5631;
             color: white;
-            padding: 30px 0;
-            margin-top: 40px;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 20px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-        
-        .footer-section p, .footer-section a {
-            color: #bdc3c7;
-            margin-bottom: 8px;
-            display: block;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .copyright {
             text-align: center;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #34495e;
-            color: #bdc3c7;
-            font-size: 14px;
+            padding: 2rem 0;
+            margin-top: 2rem;
         }
         
-        /* Mobile Styles */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                right: 15px;
-                top: 15px;
-            }
-            
-            nav {
-                width: 100%;
-                display: none;
-                margin-top: 15px;
-            }
-            
-            nav.active {
-                display: block;
-            }
-            
             nav ul {
                 flex-direction: column;
-                width: 100%;
             }
             
-            nav ul li {
-                margin: 0;
-                width: 100%;
-                text-align: center;
-                border-top: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            nav ul li a {
-                display: block;
-                padding: 10px 0;
-                width: 100%;
-            }
-            
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero h2 {
-                font-size: 24px;
-            }
-            
-            .hero p {
-                font-size: 14px;
-            }
-            
-            .section-title {
-                font-size: 22px;
-            }
-            
-            .authors-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-                gap: 15px;
-            }
-            
-            .author-img {
-                height: 130px;
-            }
-            
-            .books-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-            
-            .book-img {
-                height: 200px;
-            }
-            
-            .activities-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .author-detail {
-                flex-direction: column;
-            }
-            
-            .author-detail-img {
-                width: 120px;
-                height: 160px;
-            }
-            
-            .books-list {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            
-            .book-cover {
-                width: 70px;
-                height: 100px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .authors-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .books-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .logo h1 {
-                font-size: 18px;
-            }
-            
-            .hero h2 {
-                font-size: 20px;
-            }
-            
-            .section-title {
-                font-size: 20px;
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
     </style>
@@ -609,476 +231,235 @@
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1>ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်း</h1>
-                    <p>စာပေဖွံ့ဖြိုးရေး၊ စာရေးဆရာများ ပူးပေါင်းဆောင်ရွက်ရေး</p>
-                </div>
-                <button class="mobile-menu-btn">☰</button>
-                <nav id="main-nav">
-                    <ul>
-                        <li><a href="#authors">စာရေးဆရာများ</a></li>
-                        <li><a href="#bookstore">စာအုပ်ဆိုင်</a></li>
-                        <li><a href="#activities">လှုပ်ရှားမှုများ</a></li>
-                        <li><a href="#libraries">စာကြည့်တိုက်များ</a></li>
-                        <li><a href="#membership">အဖွဲ့ဝင်ဖြစ်ရန်</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <h1>ညောင်လေးပင်မြို့</h1>
+            <p>သမိုင်းဝင်၊ ယဉ်ကျေးမှုနှင့် စာပေမြို့တော်</p>
         </div>
     </header>
-
-    <section class="hero">
-        <div class="container">
-            <h2>စာပေလောကအား မြှင့်တင်ပေးနေသော စာရေးဆရာများ</h2>
-            <p>ညောင်လေးပင်မြို့နယ်မှ ထင်ရှားသော စာရေးဆရာများ၏ လက်ရာများနှင့် စာပေလှုပ်ရှားမှုများကို လေ့လာပါ</p>
-        </div>
-    </section>
-
-    <div class="container">
-        <section id="authors" class="section">
-            <h2 class="section-title">စာရေးဆရာများ</h2>
-            <div class="authors-grid" id="authors-grid">
-                <!-- Authors will be populated by JavaScript -->
-            </div>
-        </section>
-
-        <section id="bookstore" class="section">
-            <h2 class="section-title">စာအုပ်ရောင်းဝယ်ရေးဌာန</h2>
-            <div class="bookstore">
-                <p>ကျွန်ုပ်တို့အသင်း၏ စာအုပ်ရောင်းဝယ်ရေးဌာနသည် စာရေးဆရာများ၏ စာအုပ်များကို လွယ်ကူစွာ ဝယ်ယူနိုင်ရန် စီစဉ်ပေးထားပါသည်။</p>
-                
-                <div class="bookstore-categories">
-                    <button class="category-btn active" data-category="all">စာအုပ်အားလုံး</button>
-                    <button class="category-btn" data-category="local">ဒေသခံစာရေးဆရာများ</button>
-                    <button class="category-btn" data-category="novel">ဝတ္ထုရှည်</button>
-                    <button class="category-btn" data-category="poem">ကဗျာ</button>
-                    <button class="category-btn" data-category="history">သမိုင်း</button>
-                </div>
-                
-                <div class="books-grid" id="books-grid">
-                    <!-- Books will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <section id="activities" class="section">
-            <h2 class="section-title">လှုပ်ရှားမှုပုံရိပ်သတင်းများ</h2>
-            <div class="activities-grid">
-                <div class="activity-card">
-                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="လှုပ်ရှားမှု" class="activity-img">
-                    <div class="activity-info">
-                        <div class="activity-date">၂၀၂၃ ခုနှစ်၊ ဇွန်လ ၁၅ ရက်</div>
-                        <h3>စာပေဟောပြောပွဲ</h3>
-                        <p>ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်းမှ ဦးဆောင်ကျင်းပသော စာပေဟောပြောပွဲအား မြို့နယ်ခန်းမ၌ ကျင်းပခဲ့သည်။</p>
+    
+    <nav>
+        <ul>
+            <li><a href="#history">သမိုင်းဝင်နေရာများ</a></li>
+            <li><a href="#monasteries">ဘုန်းကြီးကျောင်းများ</a></li>
+            <li><a href="#schools">စာသင်ကျောင်းများ</a></li>
+            <li><a href="#libraries">စာကြည့်တိုက်များ</a></li>
+            <li><a href="#authors">စာရေးဆရာများ</a></li>
+            <li><a href="#markets">ဈေးဆိုင်များ</a></li>
+            <li><a href="#bookstores">စာအုပ်ဆိုင်များ</a></li>
+            <li><a href="#contact">ဆက်သွယ်ရန်</a></li>
+        </ul>
+    </nav>
+    
+    <main class="container">
+        <!-- သမိုင်းဝင် ဘုရား စေတီ ပုထိုးများ -->
+        <section id="history">
+            <h2 class="section-title">သမိုင်းဝင် ဘုရား စေတီ ပုထိုးများ</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="သမိုင်းဝင်ဘုရား">
+                    <div class="card-content">
+                        <h3>ညောင်လေးပင် ဘုရားကြီး</h3>
+                        <p>မြို့၏အထင်ကရ သမိုင်းဝင်ဘုရားကြီး</p>
                     </div>
                 </div>
-                <div class="activity-card">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="လှုပ်ရှားမှု" class="activity-img">
-                    <div class="activity-info">
-                        <div class="activity-date">၂၀၂၃ ခုနှစ်၊ မေလ ၂၀ ရက်</div>
-                        <h3>စာမူပြိုင်ပွဲဆုချီးမြှင့်ပွဲ</h3>
-                        <p>အသင်းမှ ဦးဆောင်ကျင်းပသော နှစ်စဉ်စာမူပြိုင်ပွဲဆုချီးမြှင့်ပွဲကို ကျင်းပခဲ့သည်။</p>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1598970605070-1d4e94b4f7df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စေတီပုံ">
+                    <div class="card-content">
+                        <h3>ကုသိနာရုံ လျောင်းတော်မူဘုရားကြီး</h3>
+                        <p>သမိုင်းဝင်စေတီတော်တစ်ဆူ</p>
                     </div>
                 </div>
-                <div class="activity-card">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="လှုပ်ရှားမှု" class="activity-img">
-                    <div class="activity-info">
-                        <div class="activity-date">၂၀၂၃ ခုနှစ်၊ ဧပြီလ ၁၀ ရက်</div>
-                        <h3>စာရေးဆရာများ ဆွေးနွေးပွဲ</h3>
-                        <p>စာရေးဆရာအသစ်များနှင့် ရင့်ကျက်စာရေးဆရာများ ဆွေးနွေးပွဲကို ကျင်းပခဲ့သည်။</p>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1592486057740-2b8b1d58f5c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ပုထိုးပုံ">
+                    <div class="card-content">
+                        <h3>ပါဠိသိပ္ပံ ရှေးဟောင်းကျောင်းတော်ကြီး</h3>
+                        <p>ရှေးဟောင်းဗိသုကာလက်ရာများဖြင့် တည်ဆောက်ထားသော ကျောင်းတော်ကြီး</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="libraries" class="section">
-            <h2 class="section-title">မြို့နယ်စာကြည့်တိုက်များ</h2>
-            <div class="libraries-list">
-                <div class="library-item">
-                    <div class="library-name">ညောင်လေးပင် ဗဟိုစာကြည့်တိုက်</div>
-                    <p>လိပ်စာ - ညောင်လေးပင်မြို့၊ မြို့မလမ်း</p>
-                    <p>ဖွင့်ချိန် - တနင်္လာမှ သောကြာ (နံနက် ၉:၀၀ - ညနေ ၅:၀၀)</p>
+        
+        <!-- ဘုန်းကြီးကျောင်းများ -->
+        <section id="monasteries">
+            <h2 class="section-title">ဘုန်းကြီးကျောင်းများ</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ကျောင်းပုံ">
+                    <div class="card-content">
+                        <h3>တောရကြီးကျောင်းတိုက်</h3>
+                        <p>ပရိယတ္တိစာသင်ပေးသင်ကြားပေးသော ကျောင်းတိုက်</p>
+                    </div>
                 </div>
-                <div class="library-item">
-                    <div class="library-name">ရွှေပြည်သာ စာကြည့်တိုက်</div>
-                    <p>လိပ်စာ - ရွှေပြည်သာရပ်ကွက်၊ ညောင်လေးပင်မြို့</p>
-                    <p>ဖွင့်ချိန် - ဗုဒ္ဓဟူးမှ တနင်္ဂနွေ (နံနက် ၁၀:၀၀ - ညနေ ၆:၀၀)</p>
-                </div>
-                <div class="library-item">
-                    <div class="library-name">စာပေဗိမာန် စာကြည့်တိုက်</div>
-                    <p>လိပ်စာ - ညောင်လေးပင်မြို့၊ ဈေးချိုလမ်း</p>
-                    <p>ဖွင့်ချိန် - စနေမှ ကြာသပတေး (နံနက် ၈:၃၀ - ညနေ ၄:၃၀)</p>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1592486057740-2b8b1d58f5c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ကျောင်းပုံ">
+                    <div class="card-content">
+                        <h3>ပါဠိသိပ္ပံကျောင်းတိုက်</h3>
+                        <p>ဘုန်းတော်ကြီးသင်ပညာရေး ကျောင်းတိုက်</p>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section id="membership" class="section">
-            <h2 class="section-title">စာမူဖိတ်ခေါ်ခြင်းနှင့် အဖွဲ့ဝင်လိုသူများ</h2>
-            <div class="membership">
-                <p>ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်းသို့ အဖွဲ့ဝင်လိုသူများနှင့် စာမူတင်သွင်းလိုသူများအတွက် အောက်ပါပုံစံကို ဖြည့်စွက်ပေးပါရန်။</p>
-                
-                <form id="membership-form">
+        
+        <!-- စာသင်ကျောင်းများ -->
+        <section id="schools">
+            <h2 class="section-title">စာသင်ကျောင်းများ</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ကျောင်းပုံ">
+                    <div class="card-content">
+                        <h3>ညောင်လေးပင် အထက (၁)</h3>
+                        <p>မြို့၏ အဓိကအထက်တန်းကျောင်း</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ကျောင်းပုံ">
+                    <div class="card-content">
+                        <h3>ညောင်လေးပင် အထက (၂)</h3>
+                        <p>အရည်အသွေးမြင့်ပညာရေးကို ပေးစွမ်းနိုင်သော ကျောင်း</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- စာကြည့်တိုက်များ -->
+        <section id="libraries">
+            <h2 class="section-title">စာကြည့်တိုက်များ</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာကြည့်တိုက်ပုံ">
+                    <div class="card-content">
+                        <h3>ညောင်လေးပင် မြို့နယ်စာကြည့်တိုက်</h3>
+                        <p>စာရေးဆရာများ၏ လက်ရာများ စုဆောင်းထားသော စာကြည့်တိုက်</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာကြည့်တိုက်ပုံ">
+                    <div class="card-content">
+                        <h3>ရွှေဟင်္သာ စာကြည့်တိုက်</h3>
+                        <p>ပိဋကတ်တော်နှင့် အတန်းပညာဆိုင်ရာစာအုပ်များရှိသော စာကြည့်တိုက်</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- စာရေးဆရာများ -->
+        <section id="authors">
+            <h2 class="section-title">မြို့နယ်စာရေးဆရာများ</h2>
+            <div class="author-list">
+                <div class="author-card">
+                    <h3>ဦးမြင့်သန်း</h3>
+                    <div class="pen-name">(ကလောင်အမည် - ဒေါက်တာမြင့်သန်း)</div>
+                    <p>ညောင်လေးပင်မြို့တွင် မွေးဖွားခဲ့သော စာရေးဆရာကြီး။ ဝတ္ထုရှည်၊ ဝတ္ထုတိုများစွာရေးသားခဲ့သည်။</p>
+                    <h4>စာအုပ်များ</h4>
+                    <ul class="books-list">
+                        <li>သက်ရှိတို့ကို ဖန်ဆင်းသူဗီဇ</li>
+                        <li>နှလုံးသားထဲက ဒဿနများ</li>
+                        <li>အိပ်စက်ခြင်းနှင့် ကျန်းမာရေး</li>
+                    </ul>
+                </div>
+                <div class="author-card">
+                    <h3>ဦးနေလင်း</h3>
+                    <div class="pen-name">(ကလောင်အမည် - နေလင်း)</div>
+                    <p>ကဗျာဆရာနှင့် ဝတ္ထုတိုဆောင်းပါးရေးဆရာ။ ညောင်လေးပင်မြို့၏ ရိုးရာယဉ်ကျေးမှုများကို ရေးသားလေ့ရှိသည်။</p>
+                    <h4>စာအုပ်များ</h4>
+                    <ul class="books-list">
+                        <li>ညောင်လေးပင်မြို့ဟူသည်...</li>
+                        <li>ရွှေရောင်အိပ်မက်များ</li>
+                        <li>မြစ်ကမ်းဘေးက ကျေးရွာ</li>
+                    </ul>
+                </div>
+                <div class="author-card">
+                    <h3>ဒေါ်စန်းမြင့်တင်</h3>
+                    <div class="pen-name">(ကလောင်အမည် - စန်းမြင့်တင်)</div>
+                    <p>ကဗျာဆရာ၊ စာရေးဆရာ။ ညောင်လေးပင်၏ သမိုင်းကြောင်း ဆောင်းပါးများ ရေးသားသည်။</p>
+                    <h4>စာအုပ်များ</h4>
+                    <ul class="books-list">
+                        <li>ညောင်လေးပင် သမိုင်းဝင်နေရာများ</li>
+                        <li>ခရီးစဉ်မှတ်တမ်း</li>
+                        <li>မြစ်ဝကျွန်းပေါ်ဒေသ ရိုးရာဓလေ့များ</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ဈေးဆိုင်များ -->
+        <section id="markets">
+            <h2 class="section-title">ဈေးဆိုင်များ</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ဈေးပုံ">
+                    <div class="card-content">
+                        <h3>ညောင်လေးပင် ဗဟိုဈေး</h3>
+                        <p>မြို့၏ အဓိကဗဟိုဈေး၊ လူအများစုဝယ်ယူရာနေရာ</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1585007600263-71228e40c8d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ဈေးပုံ">
+                    <div class="card-content">
+                        <h3>ဈေး အရှေ့လမ်း</h3>
+                        <p>အထည်အလိပ်နှင့် အိမ်သုံးပစ္စည်းများ အဓိကရောင်းချသောဈေး</p>
+                    </div>
+                    <div class="card">
+                    <img src="https://images.unsplash.com/photo-1585007600263-71228e40c8d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="ဈေးပုံ">
+                    <div class="card-content">
+                        <h3>ဈေး အနောက်လမ်း</h3>
+                        <p>စားသောက်ကုန်နှင့် လူသုံးကုန်ပစ္စည်းများ အဓိကရောင်းချသောဈေး</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- စာအုပ်ဆိုင်များ -->
+        <section id="bookstores">
+            <h2 class="section-title">စာအုပ်ဆိုင်များ</h2>
+            <div class="gallery">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာအုပ်ဆိုင်ပုံ">
+                    <div class="card-content">
+                        <h3>ခေတ်တရာ စာအုပ်ဆိုင်</h3>
+                        <p>စာအုပ်စာပေအမျိုးအစားစုံလင်စွာ ရောင်းချသော ဆိုင်</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="စာအုပ်ဆိုင်ပုံ">
+                    <div class="card-content">
+                        <h3>ညောင်လေးပင် စာအုပ်စင်တန်း</h3>
+                        <p>ဒေသခံစာရေးဆရာများ၏ စာအုပ်များ အဓိကရောင်းချသော ဆိုင်</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ဆက်သွယ်ရန် -->
+        <section id="contact">
+            <h2 class="section-title">ဆက်သွယ်ရန်</h2>
+            <div class="contact-form">
+                <form action="mailto:nyaunglebin@gmail.com" method="post" enctype="text/plain">
                     <div class="form-group">
                         <label for="name">အမည်</label>
                         <input type="text" id="name" name="name" required>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="penname">ကလောင်အမည် (ရှိလျှင်)</label>
-                        <input type="text" id="penname" name="penname">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">ဖုန်းနံပါတ်</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
                     <div class="form-group">
                         <label for="email">အီးမေးလ်</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" required>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="interest">စိတ်ဝင်စားရာ အကြောင်းအရာ</label>
-                        <select id="interest" name="interest">
-                            <option value="membership">အဖွဲ့ဝင်ဖြစ်လိုသည်</option>
-                            <option value="manuscript">စာမူတင်သွင်းလိုသည်</option>
-                            <option value="both">နှစ်ခုလုံး</option>
-                        </select>
+                        <label for="subject">ခေါင်းစဉ်</label>
+                        <input type="text" id="subject" name="subject" required>
                     </div>
-                    
                     <div class="form-group">
-                        <label for="message">မှတ်ချက်</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
+                        <label for="message">မက်ဆေ့ချ်</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                    
-                    <button type="submit">တင်သွင်းရန်</button>
+                    <button type="submit" class="btn">မက်ဆေ့ချ် ပို့ရန်</button>
                 </form>
             </div>
         </section>
-    </div>
-
+    </main>
+    
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ဆက်သွယ်ရန်</h3>
-                    <p>ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်း</p>
-                    <p>လိပ်စာ - ညောင်လေးပင်မြို့၊ ဗိုလ်ချုပ်လမ်း၊ အမှတ် ၁၂၃</p>
-                    <p>ဖုန်း - ၀၉ ၁၂၃၄၅၆၇၈၉</p>
-                    <p>အီးမေးလ် - nyaunglebin@gmail.com</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>လင့်ခ်များ</h3>
-                    <a href="#authors">စာရေးဆရာများ</a>
-                    <a href="#bookstore">စာအုပ်ဆိုင်</a>
-                    <a href="#activities">လှုပ်ရှားမှုများ</a>
-                    <a href="#libraries">စာကြည့်တိုက်များ</a>
-                    <a href="#membership">အဖွဲ့ဝင်ဖြစ်ရန်</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>အသင်းအကြောင်း</h3>
-                    <p>ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်းသည် ၂၀၀၅ ခုနှစ်တွင် စတင်တည်ထောင်ခဲ့ပြီး မြို့နယ်အတွင်း စာပေဖွံ့ဖြိုးတိုးတက်ရေးအတွက် ဆောင်ရွက်လျက်ရှိသည်။</p>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; ၂၀၂၃ ညောင်လေးပင်မြို့နယ် စာရေးဆရာများအသင်း - မူပိုင်ခွင့်အားလုံးရှိသည်။</p>
-            </div>
+            <p>&copy; 2023 ညောင်လေးပင်မြို့ ဝဘ်ဆိုက် | အဆင်ပြေချောမွေ့စွာ ဆက်သွယ်နိုင်ရန် - nyaunglebin@gmail.com</p>
         </div>
     </footer>
-
-    <!-- Author Detail Modal -->
-    <div id="author-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="author-detail-content">
-                <!-- Author details will be populated by JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Sample author data with auto-generated images
-        const authors = [
-            {
-                id: 1,
-                name: "ဦးမြင့်သိန်း",
-                penname: "စာရေးဆရာ ရွှေပြည်",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                bio: "ဦးမြင့်သိန်းသည် ၁၉၇၀ ပြည့်နှစ်တွင် ညောင်လေးပင်မြို့၌ မွေးဖွားခဲ့သည်။ မန္တလေးတက္ကသိုလ်မှ မြန်မာစာဌာနတွင် ပညာသင်ကြားခဲ့ပြီး ၁၉၉၅ ခုနှစ်မှစ၍ စာပေရေးသားခြင်းကို စတင်ခဲ့သည်။ ယခုအခါ ဝတ္ထုတို၊ ဝတ္ထုရှည်များစွာကို ရေးသားပြီးဖြစ်ကာ မြန်မာစာပေလောကတွင် ထင်ရှားသော စာရေးဆရာတစ်ဦးဖြစ်သည်။",
-                books: [
-                    { title: "ရွှေပြည်သာ အိပ်မက်", cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" },
-                    { title: "မြစ်ကြီးနား ခရီးသည်", cover: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" },
-                    { title: "ကျေးဇူးရှင် မိုးကောင်းကင်", cover: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1112&q=80" },
-                    { title: "အရိပ်မှာ နေရစ်ခဲ့", cover: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1198&q=80" }
-                ]
-            },
-            {
-                id: 2,
-                name: "ဒေါ်ခင်ခင်ဝင်း",
-                penname: "စာရေးဆရာမ မြမြ",
-                image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                bio: "ဒေါ်ခင်ခင်ဝင်းသည် ၁၉၈၀ ပြည့်နှစ်တွင် ညောင်လေးပင်မြို့၌ မွေးဖွားခဲ့သည်။ ရန်ကုန်တက္ကသိုလ်မှ မြန်မာစာဌာနတွင် ပညာသင်ကြားခဲ့ပြီး ၂၀၀၅ ခုနှစ်မှစ၍ ကဗျာနှင့် ဝတ္ထုတိုများ ရေးသားခဲ့သည်။ သူမ၏ လက်ရာများသည် လူမှုရေး၊ မိသားစုရေးရာများကို အဓိကထား ရေးသားလေ့ရှိပြီး စာဖတ်ပရိသတ်ကြားတွင် လူကြိုက်များသည်။",
-                books: [
-                    { title: "မေတ္တာရိပ်မှာ", cover: "https://images.unsplash.com/photo-1558901357-ca41e027e43a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" },
-                    { title: "ချစ်သူရဲ့ စကားလုံးများ", cover: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" },
-                    { title: "အချစ်ဆုံး မိခင်", cover: "https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" },
-                    { title: "ရွှေရောင်ညနေခင်း", cover: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1128&q=80" }
-                ]
-            },
-            // Add more authors here (up to 30)
-            // For brevity, I'm only including 2 authors in this example
-        ];
-
-        // Book data with detailed information
-        const books = [
-            {
-                id: 1,
-                title: "ရွှေပြည်သာ အိပ်မက်",
-                author: "ဦးမြင့်သိန်း (ရွှေပြည်)",
-                price: "၅၀၀၀ ကျပ်",
-                image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "ဤစာအုပ်သည် ကျေးရွာဘဝ၏ ရိုးရှင်းသော်လည်း နက်ရှိုင်းသော အဓိပ္ပာယ်များကို ဖော်ပြထားသည်။ ကျေးရွာလူငယ်တစ်ဦး၏ အိပ်မက်များနှင့် ဘဝခရီးကို ရေးသားထားပြီး စာဖတ်သူများအား စိတ်ဓာတ်ခွန်အားပေးသော ဝတ္ထုရှည်ဖြစ်သည်။",
-                availability: "ရရှိနိုင်ပါသည်",
-                locations: "ညောင်လေးပင် စာအုပ်ဆိုင်၊ ရွှေပြည်သာ စာအုပ်ဆိုင်",
-                category: "local"
-            },
-            {
-                id: 2,
-                title: "မေတ္တာရိပ်မှာ",
-                author: "ဒေါ်ခင်ခင်ဝင်း (မြမြ)",
-                price: "၄၅၀၀ ကျပ်",
-                image: "https://images.unsplash.com/photo-1558901357-ca41e027e43a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80",
-                description: "မိသားစုဆက်ဆံရေး၊ ချစ်ခြင်းမေတ္တာနှင့် လူမှုဆက်ဆံရေးများကို နက်နက်ရှိုင်းရှိုင်း ခြယ်မှုန်းထားသော စာအုပ်ဖြစ်သည်။ စာဖတ်သူများအား စိတ်ချမ်းသာမှုပေးနိုင်သော ဝတ္ထုတိုများစုစည်းမှုဖြစ်သည်။",
-                availability: "ရရှိနိုင်ပါသည်",
-                locations: "ညောင်လေးပင် စာအုပ်ဆိုင်၊ စာပေဗိမာန်",
-                category: "local"
-            },
-            {
-                id: 3,
-                title: "မြန်မာ့ရိုးရာ ပုံပြင်များ",
-                author: "ဦးအောင်မြင့်ဦး",
-                price: "၃၅၀၀ ကျပ်",
-                image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "မြန်မာ့ရိုးရာ ပုံပြင်များကို ခေတ်မီစွာ ပြန်လည်ရေးသားထားသော စာအုပ်ဖြစ်သည်။ ကလေးများအတွက်သာမက လူကြီးများပါ ဖတ်ရှုနိုင်သော စာအုပ်ကောင်းတစ်အုပ်ဖြစ်သည်။",
-                availability: "ရရှိနိုင်ပါသည်",
-                locations: "ညောင်လေးပင် စာအုပ်ဆိုင်၊ ရွှေပြည်သာ စာအုပ်ဆိုင်၊ စာပေဗိမာန်",
-                category: "local"
-            },
-            {
-                id: 4,
-                title: "ကျေးလက်တောရွာ ဘဝကဗျာများ",
-                author: "ဒေါ်တင်တင်အေး",
-                price: "၄၀၀၀ ကျပ်",
-                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1128&q=80",
-                description: "ကျေးလက်တောရွာဘဝ၏ သဘာဝအလှတရားများကို ကဗျာဖြင့် ဖွဲ့နွဲ့ထားသော စာအုပ်ဖြစ်သည်။ စာဖတ်သူများအား ကျေးလက်ဘဝ၏ ငြိမ်းချမ်းမှုကို ခံစားရစေမည့် ကဗျာပေါင်းချုပ်ဖြစ်သည်။",
-                availability: "ရရှိနိုင်ပါသည်",
-                locations: "ညောင်လေးပင် စာအုပ်ဆိုင်၊ ရွှေပြည်သာ စာအုပ်ဆိုင်",
-                category: "poem"
-            },
-            {
-                id: 5,
-                title: "သမိုင်းထဲက ညောင်လေးပင်",
-                author: "ဦးသန်းထွန်း",
-                price: "၆၀၀၀ ကျပ်",
-                image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
-                description: "ညောင်လေးပင်မြို့နယ်၏ သမိုင်းကြောင်းကို အချက်အလက်မှန်များဖြင့် ရေးသားထားသော စာအုပ်ဖြစ်သည်။ မြို့နယ်၏ ယဉ်ကျေးမှု၊ ဓလေ့ထုံးတမ်းများနှင့် သမိုင်းဝင်နေရာများကို စုံလင်စွာ ဖော်ပြထားသည်။",
-                availability: "ရရှိနိုင်ပါသည်",
-                locations: "ညောင်လေးပင် စာအုပ်ဆိုင်၊ စာပေဗိမာန်၊ ဗဟိုစာကြည့်တိုက်",
-                category: "history"
-            },
-            {
-                id: 6,
-                title: "မြစ်ကြီးနား ခရီးသည်",
-                author: "ဦးမြင့်သိန်း (ရွှေပြည်)",
-                price: "၅၅၀၀ ကျပ်",
-                image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1198&q=80",
-                description: "မြစ်ကြီးနားသို့ ခရီးထွက်ရင်း တွေ့ကြုံရသော စိတ်လှုပ်ရှားဖွယ်ရာများကို ရေးသားထားသော ခရီးသွားဝတ္ထုဖြစ်သည်။ စာဖတ်သူများအား ကချင်ပြည်နယ်၏ သဘာဝအလှတရားများကို ပုံဖော်ခွင့်ပေးထားသည်။",
-                availability: "ရရှိနိုင်ပါသည်",
-                locations: "ညောင်လေးပင် စာအုပ်ဆိုင်၊ ရွှေပြည်သာ စာအုပ်ဆိုင်",
-                category: "novel"
-            }
-        ];
-
-        // Mobile menu functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const mainNav = document.getElementById('main-nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-            });
-        });
-
-        // Populate authors grid
-        const authorsGrid = document.getElementById('authors-grid');
-        
-        authors.forEach(author => {
-            const authorCard = document.createElement('div');
-            authorCard.className = 'author-card';
-            authorCard.innerHTML = `
-                <img src="${author.image}" alt="${author.name}" class="author-img">
-                <div class="author-info">
-                    <div class="author-name">${author.name}</div>
-                    <div class="author-penname">${author.penname}</div>
-                </div>
-            `;
-            
-            authorCard.addEventListener('click', () => {
-                showAuthorDetail(author);
-            });
-            
-            authorsGrid.appendChild(authorCard);
-        });
-
-        // Populate books grid
-        const booksGrid = document.getElementById('books-grid');
-        
-        function displayBooks(bookList) {
-            booksGrid.innerHTML = '';
-            
-            bookList.forEach(book => {
-                const bookCard = document.createElement('div');
-                bookCard.className = 'book-card';
-                bookCard.innerHTML = `
-                    <img src="${book.image}" alt="${book.title}" class="book-img">
-                    <div class="book-details">
-                        <div class="book-title-large">${book.title}</div>
-                        <div class="book-author">${book.author}</div>
-                        <div class="book-price">${book.price}</div>
-                        <div class="book-description">${book.description}</div>
-                        <div class="book-availability">${book.availability}</div>
-                        <div class="book-locations">ရရှိနိုင်သည့်နေရာ: ${book.locations}</div>
-                        <button class="buy-btn" onclick="buyBook('${book.title}')">ဝယ်ယူရန်</button>
-                    </div>
-                `;
-                
-                booksGrid.appendChild(bookCard);
-            });
-        }
-        
-        // Initial display of all books
-        displayBooks(books);
-        
-        // Category filtering
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                const category = btn.getAttribute('data-category');
-                
-                if (category === 'all') {
-                    displayBooks(books);
-                } else {
-                    const filteredBooks = books.filter(book => book.category === category);
-                    displayBooks(filteredBooks);
-                }
-            });
-        });
-
-        // Modal functionality
-        const modal = document.getElementById('author-modal');
-        const closeBtn = document.querySelector('.close-btn');
-        const authorDetailContent = document.getElementById('author-detail-content');
-        
-        function showAuthorDetail(author) {
-            authorDetailContent.innerHTML = `
-                <div class="author-detail">
-                    <img src="${author.image}" alt="${author.name}" class="author-detail-img">
-                    <div>
-                        <h2>${author.name} (${author.penname})</h2>
-                        <div class="author-bio">
-                            <p>${author.bio}</p>
-                        </div>
-                        <h3>ရေးသားခဲ့သော စာအုပ်များ</h3>
-                        <div class="books-list">
-                            ${author.books.map(book => `
-                                <div class="book-item">
-                                    <img src="${book.cover}" alt="${book.title}" class="book-cover">
-                                    <div class="book-title">${book.title}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            modal.style.display = 'block';
-        }
-        
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-        
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // Buy book function
-        function buyBook(bookTitle) {
-            const subject = `စာအုပ်ဝယ်ယူလိုပါသည် - ${bookTitle}`;
-            const body = `မင်္ဂလာပါ၊\n\nကျွန်ုပ် အောက်ပါစာအုပ်ကို ဝယ်ယူလိုပါသည် -\n\nစာအုပ်အမည်: ${bookTitle}\n\nကျေးဇူးပြု၍ ဆက်သွယ်ပေးပါရန်။\n\nကျေးဇူးတင်ပါသည်။`;
-            
-            const mailtoLink = `mailto:nyaunglebin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
-        }
-
-        // Form submission to email
-        const membershipForm = document.getElementById('membership-form');
-        
-        membershipForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(membershipForm);
-            const name = formData.get('name');
-            const penname = formData.get('penname');
-            const phone = formData.get('phone');
-            const email = formData.get('email');
-            const interest = formData.get('interest');
-            const message = formData.get('message');
-            
-            // Create email content
-            const subject = `အဖွဲ့ဝင်လျှောက်လွှာ - ${name}`;
-            const body = `
-အမည်: ${name}
-ကလောင်အမည်: ${penname || 'မရှိပါ'}
-ဖုန်းနံပါတ်: ${phone}
-အီးမေးလ်: ${email || 'မရှိပါ'}
-စိတ်ဝင်စားရာ: ${interest}
-မှတ်ချက်: ${message || 'မရှိပါ'}
-            `.trim();
-            
-            // Create mailto link
-            const mailtoLink = `mailto:nyaunglebin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show confirmation message
-            setTimeout(() => {
-                alert('ကျေးဇူးတင်ပါသည်။ သင့်အချက်အလက်များကို လက်ခံရရှိပါသည်။ အနီးကပ်ရက်အတွင်း ဆက်သွယ်ပေးပါမည်။');
-                membershipForm.reset();
-            }, 1000);
-        });
-    </script>
 </body>
 </html>
-
