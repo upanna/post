@@ -810,6 +810,96 @@
     </footer>
     
     <script>
+// စာရေးဆရာ စာရင်း array - ဒီနေရာမှာ ထပ်ထည့်နိုင်ပါတယ်
+// နောက်ထပ် စာရေးဆရာ ထည့်ချင်ရင် ဒီ array ထဲ {name, image, bio} ပုံစံနဲ့ ထပ်ထည့်ပါ
+const writers = [
+    {
+        name: "ဦးမြင့်သန်း (ဒေါက်တာမြင့်သန်း)",
+        image: "https://via.placeholder.com/200x200?text=ဦးမြင့်သန်း", // သင့်ပုံ URL နဲ့ အစားထိုး
+        bio: "ညောင်လေးပင်မြို့တွင် မွေးဖွားခဲ့သော စာရေးဆရာကြီး။ ဝတ္ထုရေးသားမှုများဖြင့် မြန်မာ့စာပေလောကတွင် ထင်ရှားသူ။ သူ၏ လက်ရာများတွင် ဒေသခံ ယဉ်ကျေးမှု နှင့် လူ့ဘဝ ကို ထည့်သွင်း ရေးသားခဲ့သည်။ စာအုပ်များ - သက်ရှိတို့ကို ဖန်ဆင်းသူဗီဇ။"
+    },
+    {
+        name: "မောင်ကြည်လင် (ရွှေကြိုးကြာ)",
+        image: "https://via.placeholder.com/200x200?text=မောင်ကြည်လင်",
+        bio: "ညောင်လေးပင်မြို့ မှ ထွက်ပေါ်လာသော ကဗျာဆရာ နှင့် ဝတ္ထုရေးဆရာ။ သူ၏ စာများတွင် ဒေသခံ သဘာဝ နှင့် လူ့ဆက်ဆံရေး ကို ချစ်စရာ ကောင်းစွာ ဖော်ပြခဲ့သည်။ စာအုပ်များ - တို့တောရွာ။"
+    },
+    {
+        name: "စန်းမြင့်တင်",
+        image: "https://via.placeholder.com/200x200?text=စန်းမြင့်တင်",
+        bio: "ညောင်လေးပင်မြို့၏ ထင်ရှားသော စာရေးဆရာ။ သမိုင်း နှင့် ယဉ်ကျေးမှု ဆိုင်ရာ စာအုပ်များ ရေးသားခဲ့သူ။ စာအုပ်များ - ရွှေကျင်မြေနှင့်ရွှေကျင်ရေ။"
+    },
+    {
+        name: "လင်းထင်ကျော်",
+        image: "https://via.placeholder.com/200x200?text=လင်းထင်ကျော်",
+        bio: "ဒေသခံ စာရေးဆရာ တစ်ဦး။ သူ၏ လက်ရာများတွင် မြို့၏ နေ့စဉ်ဘဝ နှင့် အနာဂတ် မျှော်လင့်ချက်များ ပါဝင်သည်။ စာအုပ်များ - နောက်ဆုံးတော့ ရွှေဘပဲနိုင်မှာပါ။"
+    },
+    {
+        name: "မောင်စုမြင်",
+        image: "https://via.placeholder.com/200x200?text=မောင်စုမြင်",
+        bio: "ညောင်လေးပင်မြို့ စာပေ အသိုင်းအဝိုင်း၏ အရေးပါသော အဖွဲ့ဝင်။ ဆောင်းပါး နှင့် ဝတ္ထု ရေးသားမှုများ ထင်ရှားသည်။ စာအုပ်များ - ဆောင်းပါးရှင်။"
+    },
+    {
+        name: "ဌေးနိုင် (ဗန်ဒါ)",
+        image: "https://via.placeholder.com/200x200?text=ဌေးနိုင်",
+        bio: "ပညာရေး နှင့် ဗိသုကာ ဆိုင်ရာ စာရေးဆရာ။ ညောင်လေးပင်မြို့၏ ပညာရေး သမိုင်း ကို မှတ်တမ်း တင်ခဲ့သူ။ စာအုပ်များ - ပညာရေးဗိသုကာဆရာကြီး ဦးအုန်းကျော်။"
+    }
+    // နောက်ထပ် ထည့်ချင်ရင် ဒီနေရာမှာ ထပ်ထည့်ပါ၊ ဥပမာ:
+    // {
+    //     name: "နောက်ဆရာ နာမည်",
+    //     image: "ပုံ URL",
+    //     bio: "Bio စာသား..."
+    // }
+];
+
+// စာရင်း ထုတ်ပြရန် function
+function displayWriters() {
+    const grid = document.getElementById('writers-grid');
+    grid.innerHTML = ''; // ရှင်းလင်း
+
+    writers.forEach(writer => {
+        const card = document.createElement('div');
+        card.className = 'writer-card';
+        card.innerHTML = `
+            <img src="${writer.image}" alt="${writer.name}" onclick="openModal('${writer.name}', '${writer.image}', '${writer.bio.replace(/'/g, "\\'")}')">
+            <h3>${writer.name}</h3>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+// Modal ဖွင့်ရန် function
+function openModal(name, image, bio) {
+    const modal = document.getElementById('bio-modal');
+    const bioName = document.getElementById('bio-name');
+    const bioImage = document.getElementById('bio-image');
+    const bioText = document.getElementById('bio-text');
+
+    bioName.textContent = name;
+    bioImage.src = image;
+    bioText.textContent = bio;
+
+    modal.style.display = 'block';
+}
+
+// Modal ပိတ်ရန်
+const modal = document.getElementById('bio-modal');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// စာမျက်နှာ လုပ်ချင်း စာရင်း ထုတ်ပြ
+document.addEventListener('DOMContentLoaded', displayWriters);
+
+
+        
         // Mobile Navigation Toggle
         document.addEventListener('DOMContentLoaded', function() {
             const mobileNavToggle = document.getElementById('mobileNavToggle');
@@ -952,6 +1042,7 @@
     </script>
 </body>
 </html>
+
 
 
 
