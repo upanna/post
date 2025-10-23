@@ -1,90 +1,143 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Post Form</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar&display=swap');
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Sans Myanmar', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
-    .container {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 18px;
-      padding: 40px 30px;
-      max-width: 360px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      transition: background 0.3s ease;
-    }
-    .container:hover {
-      background: rgba(255, 255, 255, 0.18);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>စာမူ ပို့ရန်</title>
+<style>
+  /* Google Noto Sans Myanmar */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&display=swap');
+
+  body {
+    margin: 0; 
+    padding: 0;
+    font-family: 'Noto Sans Myanmar', Myanmar Text, sans-serif;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #222;
+    direction: ltr; /* ဘယ်မှညာ စာရေးထုံးအတိုင်း */
+  }
+
+  .box {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(102, 166, 255, 0.3);
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #0d47a1;
+    line-height: 1.4;
+  }
+
+  a.post-link {
+    display: inline-block;
+    padding: 14px 40px;
+    font-size: 18px;
+    background: #0d47a1;
+    color: white;
+    border-radius: 35px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(13, 71, 161, 0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    margin: 10px 0;
+  }
+
+  a.post-link:hover,
+  a.post-link:focus {
+    background: #064190;
+    box-shadow: 0 12px 30px rgba(6, 65, 144, 0.8);
+    outline: none;
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .email-preview {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+    border-left: 4px solid #0d47a1;
+  }
+
+  .email-preview div {
+    margin-bottom: 15px;
+  }
+
+  .email-preview .placeholder {
+    color: #888;
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .email-preview .body-text {
+    min-height: 60px; /* စာကိုယ် ၃ လက်မခန့် */
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+  }
+
+  @media (max-width: 400px) {
     h1 {
-      font-size: 28px;
-      margin-bottom: 24px;
-      font-weight: 700;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+      font-size: 24px;
     }
     a.post-link {
-      display: inline-block;
-      background: #ff5252;
-      color: white;
-      padding: 14px 36px;
-      font-size: 20px;
-      font-weight: 600;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 6px 18px rgba(255, 82, 82, 0.6);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
+      font-size: 16px;
+      padding: 12px 32px;
     }
-    a.post-link:hover,
-    a.post-link:focus {
-      background: #ff1744;
-      box-shadow: 0 10px 26px rgba(255, 23, 68, 0.8);
-      outline: none;
+    .box {
+      padding: 20px 25px;
     }
-    p {
-      margin-top: 20px;
-      font-size: 15px;
-      color: #f0e9e9cc;
-      user-select: none;
-    }
-    @media (max-width: 400px) {
-      .container {
-        max-width: 90vw;
-        padding: 30px 20px;
-      }
-      a.post-link {
-        font-size: 18px;
-        padding: 12px 26px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="box">
     <h1>စာမူ ပို့ရန်</h1>
+    
+    <div class="email-preview">
+      <div>
+        <strong>ခေါင်းစဉ်:</strong> 
+        <span class="placeholder">စာမူခေါင်းစဉ်ထည့်ပါ.</span>
+      </div>
+      
+      <div class="body-text">
+        <strong>စာကိုယ်:</strong><br>
+        <span class="placeholder">စာကိုယ်</span>
+      </div>
+      
+      <div>
+        <strong>ကလောင်အမည်:</strong> 
+        <span class="placeholder">ကလောင်အမည်</span>
+      </div>
+    </div>
+    
     <a 
-      class="post-link" 
-      href="mailto:nyglebin.writerpost@blogger.com?subject=%E1%80%85%E1%80%AC%E1%80%99%E1%80%BA%E1%80%81%E1%80%B1%E1%80%AC%E1%80%84%E1%80%BA%E1%80%85%E1%80%B9%E1%80%84%E1%80%9A%E1%80%B9&body=%E1%80%85%E1%80%AC%E1%80%80%E1%80%AD%E1%80%AF%0A%0A%E1%80%9E%E1%80%AC%E1%80%85%E1%80%99%E1%80%BA%E1%80%80%E1%80%AD%E1%80%AF%E1%80%B8%0A%0A%E1%80%9E%E1%80%99%E1%80%AD%E1%80%AF%E1%80%B8%E1%80%9C%E1%80%AF%E1%80%94%E1%80%BA%E1%80%B8%E1%80%80%E1%80%AD%E1%80%AF%E1%80%B8%E1%80%85%E1%80%90%E1%80%AC%E1%80%84%E1%80%BA%E1%80%86%E1%80%AD%E1%80%AF%E1%80%B7" 
-      target="_blank" 
+      class="post-link"
+      href="mailto:nyglebin.writerpost@blogger.com?subject=စာမူခေါင်းစဉ်&body=စာကိုယ်%0D%0A%0D%0A-ကလောင်အမည်"
+      target="_blank"
       rel="noopener noreferrer"
     >
-      Post Form
+      စာမူပို့ရန်
     </a>
+    
     <p>နှိပ်ပြီး မိမိရဲ့ Email Client မှာ စာမူပို့ပါ။</p>
   </div>
 
