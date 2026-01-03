@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: upanna/upanna.github.io   # GitHub username/repo
+  branch: main
+
+media_folder: "webpost/images"
+public_folder: "/webpost/images"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "webpost/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
